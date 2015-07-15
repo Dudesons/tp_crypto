@@ -68,7 +68,7 @@ def hash_algo(pwd):
 
     print hash_final
 
-    return (True, hash_final)
+    return (True, hash_final[0:5])
 
 if __name__ == "__main__":
     r = hash_algo("e")
