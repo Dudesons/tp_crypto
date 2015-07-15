@@ -1,11 +1,15 @@
 import string
 from random import randint, choice
+import pdb
 
+#pdb.set_trace()
 
 def hash_algo(pwd):
     if len(pwd) <= 0:
+        print "toto"
         return (False, "Password lenght = 0")
 
+    print "titi"
     list_ascii = list()
     j = 5
     hash_list = list()
@@ -24,10 +28,12 @@ def hash_algo(pwd):
             t = t - 127
 
         list_ascii.append(t)
-
+    print list_ascii
+    coef_chunk = len(pwd)/5
+    if coef_chunk == 0:
+            coef_chunk = 1
     while k < len(list_ascii):
-        #coef_chunk = k+5
-        coef_chunk = len(pwd)/5
+        #print coef_chunk
         hash_chunk = 0
         for l in list_ascii[k:k+coef_chunk]:
             if hash_chunk > 127:
@@ -58,6 +64,10 @@ def hash_algo(pwd):
     return (True, hash_final)
 
 if __name__ == "__main__":
+    r = hash_algo("eadsqdsq")
+    print r[1]
+    print len(r[1])
+
     for x in range(20):
         print "="*20
         password = ''.join(choice(string.ascii_uppercase + string.digits) for _ in range(randint(1, 247)))
