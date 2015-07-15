@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<center>
+<h1>Try me !!!</h1>
+<form action="/crypt/" method="post" enctype="application/x-www-form-urlencoded">
+    {% csrf_token %}
+    <label class="control-label" for="pwd">Mot de passe</label><br />
+    <input id="pwd" name="pwd" type="password"  required="true" /><br />
+    <button class="">GO</button>
+</form>
+    <br />
+    <br />
+    <h1>{{ pwd }}</h1>
+</center>
+</body>
+</html>
