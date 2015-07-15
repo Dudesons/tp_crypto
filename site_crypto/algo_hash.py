@@ -4,18 +4,25 @@ import pdb
 
 #pdb.set_trace()
 
+
 def hash_algo(pwd):
     if len(pwd) <= 0:
-        print "toto"
         return (False, "Password lenght = 0")
 
-    print "titi"
+
+    if len(pwd) < 3:
+        pwd = pwd*3
+
+
     list_ascii = list()
     j = 5
     hash_list = list()
     hash_final = str()
     k = 0
 
+    coef_chunk = len(pwd)/5
+    if coef_chunk == 0:
+            coef_chunk = 1
 
     while j < len(pwd):
         j += 5
@@ -28,10 +35,7 @@ def hash_algo(pwd):
             t = t - 127
 
         list_ascii.append(t)
-    print list_ascii
-    coef_chunk = len(pwd)/5
-    if coef_chunk == 0:
-            coef_chunk = 1
+
     while k < len(list_ascii):
         #print coef_chunk
         hash_chunk = 0
@@ -47,6 +51,7 @@ def hash_algo(pwd):
 
         k += coef_chunk
 
+
     print "="*20
     print hash_list
     print "="*20
@@ -61,16 +66,19 @@ def hash_algo(pwd):
     for i in hash_list:
         hash_final += unichr(i)
 
+    print hash_final
+
     return (True, hash_final)
 
 if __name__ == "__main__":
-    r = hash_algo("eadsqdsq")
+    r = hash_algo("e")
     print r[1]
     print len(r[1])
-
+    """
     for x in range(20):
         print "="*20
         password = ''.join(choice(string.ascii_uppercase + string.digits) for _ in range(randint(1, 247)))
         r = hash_algo(password)
         print r[1]
         print len(r[1])
+    """
